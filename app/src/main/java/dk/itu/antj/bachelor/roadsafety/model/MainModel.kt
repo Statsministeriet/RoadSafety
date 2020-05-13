@@ -44,13 +44,10 @@ class MainModel(context: Context){
     }
 
     fun runModel(context: Context, z: Double) {
-        try {
-            ParameterModel(context){parameterDTO ->
-                runPredictions(parameterDTO, context, z)
-            }
-        }catch (e:ModelException){
-            println("ERROR")
+        ParameterModel(context){parameterDTO ->
+            runPredictions(parameterDTO, context, z)
         }
+
     }
 
     fun runPredictions(parameterDTO:ParameterDTO, context: Context, z: Double){

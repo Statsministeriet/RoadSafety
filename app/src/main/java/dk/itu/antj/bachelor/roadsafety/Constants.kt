@@ -1,7 +1,7 @@
 package dk.itu.antj.bachelor.roadsafety
 
 object Constants {
-    const val FILE_NAME ="UserDataRoadSafety"
+    const val FILE_NAME ="UserDataRoadSafetyV1"
     const val CURRENT_USER_LOGIN_FIRSTNAME ="UserNameLoggedInRoadSafety"
     const val CURRENT_USER_LOGIN_LASTNAME ="UserLastNameLoggedInRoadSafety"
     const val CURRENT_USER_LOGIN_BIRTH_YEAR ="UserBirthYearLoggedInRoadSafety"

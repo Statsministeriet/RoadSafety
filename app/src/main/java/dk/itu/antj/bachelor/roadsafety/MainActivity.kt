@@ -20,6 +20,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import com.google.firebase.FirebaseApp
 import dk.itu.antj.bachelor.roadsafety.model.MainModel
+import dk.itu.antj.bachelor.roadsafety.model.ModelException
 import dk.itu.antj.bachelor.roadsafety.user.ListUsers
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -39,13 +40,20 @@ class MainActivity() : AppCompatActivity() {
         start_model.setOnClickListener {
             running = !running
             if(running) {
-                mainModel.onStart(applicationContext)
+                try {
+                    mainModel.onStart(applicationContext)
+
+                }catch (e:ModelException){
+                    Toast.makeText(this,e.message,Toast.LENGTH_LONG)
+                }
                 start_model.text = "Stop model"
                 start_model.setBackgroundColor(Color.parseColor("#F0B2B2"))
+                uiLock(false)
             }else {
                 mainModel.onStop()
                 start_model.setBackgroundColor(Color.parseColor("#CCE5CC"))
                 start_model.text = "Start model"
+                uiLock(true)
             }
         }
         val sharedPref = applicationContext.getSharedPreferences(Constants.FILE_NAME, Context.MODE_PRIVATE)
@@ -65,7 +73,12 @@ class MainActivity() : AppCompatActivity() {
         val userName = sharedPref.getString(Constants.CURRENT_USER_LOGIN_FIRSTNAME, Constants.NO_VAL_DEFAULT)
         if(userName!==Constants.NO_VAL_DEFAULT){
             user_name_landing.text = userName
+            start_model.isEnabled = true
+            list_users_button.text = "Select different user"
+
         }else{
+            start_model.isEnabled = false
+            list_users_button.text = "Select a user"
             Toast.makeText(applicationContext, "To create new user, go to select different user and tab the button in the bottom right corner", Toast.LENGTH_LONG).show()
         }
         //Init location fun
@@ -134,6 +147,14 @@ class MainActivity() : AppCompatActivity() {
             override fun onStartTrackingTouch(seekBar: SeekBar) {}
             override fun onStopTrackingTouch(seekBar: SeekBar) {}
         })
+    }
+
+    private fun uiLock(predicate: Boolean){
+        autoStartToggle.isEnabled = predicate
+        sensibilitySeekBar.isEnabled = predicate
+        frequencySeekBar.isEnabled = predicate
+        list_users_button.isEnabled = predicate
+
     }
 
     private fun createNotificationChannel() {

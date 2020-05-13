@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import dk.itu.antj.bachelor.roadsafety.db.AppDatabase
 import dk.itu.antj.bachelor.roadsafety.db.User
 import kotlinx.coroutines.launch
+import java.util.*
 
 class CreateUserViewModel : ViewModel() {
 
@@ -19,7 +20,7 @@ class CreateUserViewModel : ViewModel() {
             throw UserException("Last name to short")
         }else if(genderFemale==genderMale){
             throw UserException("Gender is incorrect")
-        }else if(birthYear<0||birthMonth<0||birthDay<0){
+        }else if(birthYear<0||birthMonth<0||birthDay<0 || calculateUserAge(birthYear,birthMonth,birthDay)<18){
             throw UserException("Birthday is incorrect")
         }else if(context==null){
             throw UserException("Context is null")
@@ -44,5 +45,11 @@ class CreateUserViewModel : ViewModel() {
                 startActivity(context, intent, bundle)
             }
         }
+    }
+    private fun calculateUserAge(_year:Int, _month:Int, _day:Int):Int{
+        val today = Calendar.getInstance()
+        val month = if(today.get(Calendar.DAY_OF_MONTH)>=_day) _month+1 else _month
+        val year = if(today.get(Calendar.MONTH)>=month)  _year+1 else _year
+        return today.get(Calendar.YEAR)-year
     }
 }
