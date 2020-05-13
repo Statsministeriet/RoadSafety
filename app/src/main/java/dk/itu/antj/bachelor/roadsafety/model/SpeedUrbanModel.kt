@@ -9,7 +9,7 @@ class SpeedUrbanModel {
 
     init {
         val localModel = FirebaseCustomLocalModel.Builder()
-            .setAssetFilePath("tf/speedUrbanModel.tflite")
+            .setAssetFilePath("tf/speedUrban.tflite")
             .build()
         val options = FirebaseModelInterpreterOptions.Builder(localModel).build()
         interpreter = FirebaseModelInterpreter.getInstance(options)

@@ -9,7 +9,7 @@ class MunicipalityUrbanModel() {
 
     init {
         val localModel = FirebaseCustomLocalModel.Builder()
-            .setAssetFilePath("tf/municipalityUrbanModel.tflite")
+            .setAssetFilePath("tf/munUrbanModel.tflite")
             .build()
         val options = FirebaseModelInterpreterOptions.Builder(localModel).build()
         interpreter = FirebaseModelInterpreter.getInstance(options)
