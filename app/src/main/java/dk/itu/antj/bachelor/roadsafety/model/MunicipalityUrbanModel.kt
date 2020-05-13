@@ -39,7 +39,8 @@ class MunicipalityUrbanModel() {
     private fun parametersModelInput(municipalityIndex:Int, urban:Boolean): IntArray {
         var parameters = IntArray(99)
         for (index in 0..parameters.lastIndex){
-            parameters[index] = if(index==municipalityIndex) 1 else if(index==99 && urban) 1 else 0
+            //The urban parameter is on 98 and not on 99
+            parameters[index] = if(index==municipalityIndex) 1 else if(index==98 && urban) 1 else 0
         }
         return parameters
     }

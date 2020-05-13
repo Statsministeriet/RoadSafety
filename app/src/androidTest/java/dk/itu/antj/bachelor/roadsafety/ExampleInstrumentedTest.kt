@@ -21,4 +21,12 @@ class ExampleInstrumentedTest {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("dk.itu.antj.bachelor.roadsafety", appContext.packageName)
     }
+    @Test
+    fun test() {
+        TODO()
+        // Context of the app under test.
+        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+
+
+    }
 }

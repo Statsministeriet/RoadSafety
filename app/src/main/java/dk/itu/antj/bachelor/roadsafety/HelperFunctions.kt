@@ -42,35 +42,4 @@ class HelperFunctions {
             // Permission has already been granted
         }
     }
-/**
-    fun getLocations(fusedLocationClient:FusedLocationProviderClient, applicationContext: Context){
-        fusedLocationClient.lastLocation.addOnSuccessListener { location : Location? ->
-            Toast.makeText(applicationContext, Pair(location?.latitude, location?.longitude).toString(), Toast.LENGTH_LONG).show()
-            Pair(location?.latitude, location?.longitude)
-        }
-    }
-
-    fun getLocations(fusedLocationClient:FusedLocationProviderClient, applicationContext:Context):String{
-        var end = ""
-        fusedLocationClient.lastLocation.addOnSuccessListener { location : Location? ->
-            Toast.makeText(applicationContext, location?.speed.toString(), Toast.LENGTH_LONG).show()
-            val speed = location?.speed
-            end = when{
-                speed == null -> "fail"
-                speed <= 20.toFloat() ->    "20"
-                speed <= 50.toFloat() ->    "20"
-                speed <= 60.toFloat() ->    "20"
-                speed <= 70.toFloat() ->    "20"
-                speed <= 80.toFloat() ->    "20"
-                speed <= 90.toFloat() ->    "20"
-                speed <= 100.toFloat() ->   "20"
-                speed <= 110.toFloat() ->   "20"
-                speed <= 120.toFloat() ->   "20"
-                speed > 120.toFloat() ->    "20"
-
-                else -> "OUT OF RANGE"
-            }
-        }
-        return end;
-    }*/
 }
