@@ -1,13 +1,11 @@
 <resources>
     <string name="app_name">RoadSafety</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="title_activity_list_users">ListUsers</string>
     <string name="channel_name">Traffic alerts</string>
     <string name="channel_description">This notification alerts you when there\'s a risk of an accident. Define the frequency in the application.</string>
     <string name="select_different_user">Select different user</string>
     <string name="welcome">Welcome</string>
     <string name="start_model">Start model</string>
-    <!-- Strings used for fragments for navigation -->
 
 </resources>

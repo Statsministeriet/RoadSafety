@@ -19,7 +19,7 @@ class MainModel(context: Context){
 
     private var lastRisk = ""
 
-    private var accidentPrediction = Predictor("Accident")
+    var accidentPrediction = Predictor("Accident")
     private var accidentTypePredication:List<Predictor> = List(10){
         Predictor(Constants.ACCIDENT_TYPES[it])
     }
@@ -50,9 +50,6 @@ class MainModel(context: Context){
             }
         }catch (e:ModelException){
             println("ERROR")
-
-            println(e)
-            TODO("Update this")
         }
     }
 
@@ -72,7 +69,8 @@ class MainModel(context: Context){
                         val notificationBuilder = NotificationCompat.Builder(context, Constants.FILE_NAME)
                             .setSmallIcon(R.drawable.alert2)
                             .setContentTitle("RISK OF ACCIDENT")
-                            .setContentText("Be careful for $accidentType")
+                            .setStyle(NotificationCompat.BigTextStyle()
+                                .bigText("Be careful for $accidentType"))
                         with(NotificationManagerCompat.from(context)) {
                             // notificationId is a unique int for each notification that you must define
                             notify(counter, notificationBuilder.build())
