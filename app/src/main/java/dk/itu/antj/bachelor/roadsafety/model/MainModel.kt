@@ -47,7 +47,6 @@ class MainModel(context: Context){
         ParameterModel(context){parameterDTO ->
             runPredictions(parameterDTO, context, z)
         }
-
     }
 
     fun runPredictions(parameterDTO:ParameterDTO, context: Context, z: Double){

@@ -1,7 +1,7 @@
 package dk.itu.antj.bachelor.roadsafety
 
+
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -9,21 +9,16 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
-import com.google.firebase.FirebaseApp
 import dk.itu.antj.bachelor.roadsafety.model.MainModel
 import dk.itu.antj.bachelor.roadsafety.model.ModelException
 import dk.itu.antj.bachelor.roadsafety.user.ListUsers
 import kotlinx.android.synthetic.main.activity_main.*
-
 class MainActivity() : AppCompatActivity() {
     var running = false
     override fun onCreate(savedInstanceState: Bundle?) {
